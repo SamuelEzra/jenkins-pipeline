@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Connet to GitHub') {
+        stage('Connect to GitHub') {
             steps {
                 echo 'Checking out...'
                 // Add your build steps here
@@ -19,6 +19,7 @@ pipeline {
                 script {
                     sh 'docker build -t ez-jenkins .'
                 }
+            }
         }
         stage('Run Docker Container') {
             steps {
