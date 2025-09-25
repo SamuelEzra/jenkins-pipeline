@@ -44,6 +44,8 @@ This is the static site content served by Nginx.
 
 ![jenkins](./jenkins.png)
 
+**Note:** You can run docker without port mapping
+
 ---
 
 ### 5. Configure Jenkins Job
