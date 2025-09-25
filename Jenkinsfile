@@ -41,7 +41,7 @@ pipeline {
             steps {
                 echo 'Running Docker container...'
                 script {
-                    sh 'docker run -d -p 8001:80 ezraone/ez-jenkins'
+                    sh 'docker run -d ezraone/ez-jenkins'
                 }
                 // Add your deploy steps here
             }
