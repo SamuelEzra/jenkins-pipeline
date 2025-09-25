@@ -13,20 +13,27 @@ pipeline {
                 )
             }
         }
-        stage('Build Docker Image') {
+        stage('Login to DockerHub') {
             steps {
-                echo 'Building Docker image...'
+                echo 'Logging into DockerHub...'
                 script {
                     withCredentials([
                         usernamePassword(
-                            credentialsId: 'docker-hub-cred', 
+                            credentialsId: 'docker-hub-creds', 
                             usernameVariable: 'DOCKERHUB_USERNAME', 
                             passwordVariable: 'DOCKERHUB_PASSWORD'
                         )
                     ]) {
                         sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
                     }
-                        sh 'docker build -t ez-jenkins .'
+                }
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                script {
+                    sh 'docker build -t ez-jenkins .'
                 }
             }
         }
