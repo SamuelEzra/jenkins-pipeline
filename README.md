@@ -101,6 +101,53 @@ This is the static site content served by Nginx.
 
 ---
 
+## Additional (for security)
+
+### Configure Docker Hub Token in Jenkins Pipeline
+
+🧱 **1. Generate Docker Hub Access Token**
+
+- Go to `Docker Hub`
+
+- Click your profile → Account Settings → Security
+
+- Click New Access Token
+
+- Name it (e.g., jenkins-ci-token)
+
+- Choose Read & Write
+
+- Click Generate and copy the token immediately
+
+--- 
+🔐 **2. Add Token to Jenkins Credentials**
+
+- Go to Jenkins dashboard → Manage Jenkins → Credentials
+
+- Choose (global) → Add Credentials
+
+- Select:
+
+    - Kind: Username and Password
+
+    - Username: Your Docker Hub username
+
+    - Password: The access token you just generated
+
+    - ID: docker-hub-creds (or any name you’ll reference in your pipeline)
+
+    - Description: Docker Hub token for CI/CD
+
+--- 
+
+🧪 **3. Use Token in Your Jenkinsfile**
+
+Update your pipeline to authenticate before building:
+
+Add the Jenkins stage below using your custom ID
+
+![dockerhub](./dockerhub.png)
+
 ## Troubleshooting
 
 **Jenkins' Reverse Proxy Issue:** 
