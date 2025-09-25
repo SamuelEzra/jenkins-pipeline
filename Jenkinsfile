@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo 'Building Docker image...'
                 script {
-                    sh 'docker build -t ez-jenkins .'
+                    sh 'docker build -t ezraone/ez-jenkins .'
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
             steps {
                 echo 'Running Docker container...'
                 script {
-                    sh 'docker run -d -p 8081:80 ez-jenkins'
+                    sh 'docker run -d -p 8081:80 ezraone/ez-jenkins'
                 }
                 // Add your deploy steps here
             }
